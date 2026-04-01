@@ -1,25 +1,52 @@
-# LAB05 – Type Hints, Generics, Mypy
+# LAB05 – Type Hints and mypy
 
-Python version: Python 3.12+
+## 📌 Description
+This laboratory work demonstrates the use of type hints in Python and static type checking with mypy.
 
-## Run
+The goal is to:
+- learn how to annotate functions with types
+- understand why type checking is useful
+- practice writing clean and readable code
 
-Copy code from src/main.py and run it in any Python 3 environment or online compiler.
+---
 
-## Type checking
+## ⚙️ Requirements
+
+- Python 3.12+
+- mypy
+
+Install mypy:
+pip install mypy
+
+---
+
+## ▶️ Run program
+
+python src/main.py
+
+---
+
+## 🔍 Run type checking
 
 mypy --strict src/
 
-## Description
+---
 
-This project demonstrates:
+## 📚 Tasks overview
 
-Task A – basic type hints  
-Task B – typed collections  
-Task C – optional return values  
-Task D – function types (Callable)  
-Task E – generics (TypeVar)  
-Task F – functions returning functions  
-Task G – pipeline with lambda and generator expressions  
+1. Functions with type hints
+2. Work with collections (list, tuple, dict)
+3. Optional and Union types
+4. Lambda and higher-order functions
+5. Demonstration of usage for each function
 
-All tasks include usage examples.
+---
+
+## 💡 Notes
+
+All functions include:
+- type annotations
+- comments explaining what they do
+- simple usage examples (print)
+
+The code is written to be compatible with strict mypy checks.
