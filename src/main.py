@@ -1,102 +1,83 @@
-# LAB05 – Type Hints, Generics, Mypy
+from typing import List, Tuple, Dict, Optional, Union, Callable
 
-from typing import List, Optional, Callable, TypeVar
 
-# -----------------------------
-# Task A — Basic Type Hints
-# -----------------------------
+# =========================
+# A. Simple function
+# =========================
 
+# This function adds two integers and returns the result
 def add(a: int, b: int) -> int:
     return a + b
 
-def square_list(data: List[int]) -> List[int]:
-    return [x * x for x in data]
 
-print("Task A")
-print(add(2, 3))
-print(square_list([1, 2, 3]))
+# =========================
+# B. Work with list
+# =========================
 
-
-# -----------------------------
-# Task B — Typed Collections
-# -----------------------------
-
-def filter_even(data: List[int]) -> List[int]:
-    return [x for x in data if x % 2 == 0]
-
-print()
-print("Task B")
-print(filter_even([1, 2, 3, 4, 5, 6]))
+# This function returns the sum of all elements in a list
+def sum_list(numbers: List[int]) -> int:
+    return sum(numbers)
 
 
-# -----------------------------
-# Task C — Optional
-# -----------------------------
+# =========================
+# C. Tuple example
+# =========================
 
-def find(data: List[int], x: int) -> Optional[int]:
-    for item in data:
-        if item == x:
-            return item
-    return None
-
-print()
-print("Task C")
-print(find([1, 2, 3], 2))   # found
-print(find([1, 2, 3], 10))  # not found
+# This function returns a tuple with number and its square
+def number_and_square(x: int) -> Tuple[int, int]:
+    return x, x * x
 
 
-# -----------------------------
-# Task D — Function Type
-# -----------------------------
+# =========================
+# D. Dictionary example
+# =========================
 
-def apply(func: Callable[[int], int], x: int) -> int:
+# This function returns the value by key or None if key not found
+def get_value(data: Dict[str, int], key: str) -> Optional[int]:
+    return data.get(key)
+
+
+# =========================
+# E. Union example
+# =========================
+
+# This function accepts int or float and returns it as float
+def to_float(value: Union[int, float]) -> float:
+    return float(value)
+
+
+# =========================
+# F. Higher-order function
+# =========================
+
+# This function applies another function to a number
+def apply_function(x: int, func: Callable[[int], int]) -> int:
     return func(x)
 
-print()
-print("Task D")
-print(apply(lambda x: x + 1, 5))
-print(apply(lambda x: x * 2, 5))
+
+# =========================
+# G. Lambda example
+# =========================
+
+# Lambda function to double a number
+double = lambda x: x * 2
 
 
-# -----------------------------
-# Task E — Generics
-# -----------------------------
+# =========================
+# Demonstration
+# =========================
 
-T = TypeVar('T')
+if __name__ == "__main__":
+    print("Task A:", add(2, 3))
 
-def first(items: List[T]) -> T:
-    return items[0]
+    print("Task B:", sum_list([1, 2, 3, 4]))
 
-print()
-print("Task E")
-print(first([1, 2, 3]))
-print(first(["a", "b", "c"]))
+    print("Task C:", number_and_square(5))
 
+    print("Task D:", get_value({"a": 10, "b": 20}, "a"))
 
-# -----------------------------
-# Task F — Function Returning Function
-# -----------------------------
+    print("Task E:", to_float(7))
 
-def make_multiplier(k: int) -> Callable[[int], int]:
-    def multiply(x: int) -> int:
-        return x * k
-    return multiply
+    print("Task F:", apply_function(5, double))
 
-print()
-print("Task F")
-times3 = make_multiplier(3)
-print(times3(5))
-
-
-# -----------------------------
-# Task G — Pipeline
-# -----------------------------
-
-numbers = [1, 2, 3, 4, 5, 6, 7, 8]
-
-result = sum(x * x for x in numbers if x % 2 == 0)
-
-
-print()
-print("Task G")
-print(result)
+    print("Task G:", double(10))
